@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/hgm/VSCodeProjects/ModelDeploy/build",
+  "command": "/usr/bin/g++   -I/home/hgm/ThirdParty/onnxruntime-linux-x64-1.12.1/include -I/usr/local/include/opencv4/include -I/home/hgm/VSCodeProjects/ModelDeploy/cv -I/home/hgm/VSCodeProjects/ModelDeploy/cv/include -I/home/hgm/VSCodeProjects/ModelDeploy/ort/include -isystem /usr/local/include/opencv4  -g   -o CMakeFiles/ModelDeploy.dir/cv/src/resnet18.cpp.o -c /home/hgm/VSCodeProjects/ModelDeploy/cv/src/resnet18.cpp",
+  "file": "/home/hgm/VSCodeProjects/ModelDeploy/cv/src/resnet18.cpp"
+},
+{
+  "directory": "/home/hgm/VSCodeProjects/ModelDeploy/build",
+  "command": "/usr/bin/g++   -I/home/hgm/ThirdParty/onnxruntime-linux-x64-1.12.1/include -I/usr/local/include/opencv4/include -I/home/hgm/VSCodeProjects/ModelDeploy/cv -I/home/hgm/VSCodeProjects/ModelDeploy/cv/include -I/home/hgm/VSCodeProjects/ModelDeploy/ort/include -isystem /usr/local/include/opencv4  -g   -o CMakeFiles/ModelDeploy.dir/test.cpp.o -c /home/hgm/VSCodeProjects/ModelDeploy/test.cpp",
+  "file": "/home/hgm/VSCodeProjects/ModelDeploy/test.cpp"
+}
+]
