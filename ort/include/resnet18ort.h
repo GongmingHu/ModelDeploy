@@ -2,6 +2,7 @@
 #include <onnxruntime_cxx_api.h>
 #include <iostream>
 #include <fstream>
+#include "utils.h"
 
 using namespace std;
 
@@ -24,19 +25,14 @@ private:
     Ort::MemoryInfo _memory_info_handler = Ort::MemoryInfo::CreateCpu(
                 OrtArenaAllocator, OrtMemTypeDefault);
 
-//    char * _inputName;
-//    char * _outputName;
-
-    vector<const char *> inputNames;
-    vector<const char *> outputNames;
+    vector<string> inputNames;
+    vector<string> outputNames;
     
-    
-    //void readLabels(const string & classPath);
     void InitOrtEnv();
 
 public:
     explicit ResNet18Ort(const string & imagePath, const string & classPath,const string & modelPath);
     ~ResNet18Ort();
-    void classify();
+    void classify(ClassificationResults & result, int topk = 1);
 };
 

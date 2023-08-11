@@ -1,7 +1,14 @@
+#ifndef _UTILS_H_
+#define _UTILS_H_
+
 #include <iostream>
 #include <vector>
+using namespace std;
 
-
+struct ClassificationResults{
+        vector<float> score;
+        vector<std::string>label;
+    };
 
 template <typename T>
 std::vector<float> softmax(const T *logits, unsigned int _size, unsigned int &max_id)
@@ -83,3 +90,5 @@ std::vector<unsigned int> argsort(
               { return arr[a] > arr[b]; });
     return indices;
 }
+
+#endif

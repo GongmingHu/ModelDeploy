@@ -1,5 +1,4 @@
 #include "resnet18.h"
-#include "utils.h"
 
 ResNet18::ResNet18(const string &imagePath, const string &classPath, const string &modelPath)
 {

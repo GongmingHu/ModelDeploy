@@ -9,8 +9,8 @@ include_directories("${ONNXRUNTIME_DIR}/include")
 
 find_package(OpenCV 4 REQUIRED)
 
-include_directories( ${OpenCV_INCLUDE_DIRS}/include ${CMAKE_SOURCE_DIR}/cv ${CMAKE_SOURCE_DIR}/cv/include ${CMAKE_SOURCE_DIR}/ort/include)
-# include_directories( ${CMAKE_SOURCE_DIR}/ort/include)
+include_directories( ${OpenCV_INCLUDE_DIRS}/include ${CMAKE_SOURCE_DIR}/cv/include ${CMAKE_SOURCE_DIR}/ort/include)
+include_directories( ${CMAKE_SOURCE_DIR})
 
 aux_source_directory(${CMAKE_SOURCE_DIR}/cv/src SRC_CV )
 aux_source_directory(${CMAKE_SOURCE_DIR}/ort/src SRC_ORT)
