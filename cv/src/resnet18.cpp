@@ -33,33 +33,17 @@ void ResNet18::transform(cv::Mat &outputImage)
                            cv::Scalar(), true, false);
 }
 
-void ResNet18::classify(ClassificationResults & result, int topk)
+void ResNet18::classify(util::ClassificationResults & result, int topk)
 {
     cv::Mat blob;
     transform(blob);
     _net.setInput(blob);
     cv::Mat prob = _net.forward();
-    
-    
-    // cv::Point classIdPoint;
-    // double confidence;
-    // float maxProb = 0.0;
-    // float sum = 0.0;
-    // cv::Mat softmaxProb;
-    
-    // maxProb = *std::max_element(prob.begin<float>(), prob.end<float>());
-    // cv::exp(prob-maxProb, softmaxProb);
-    // sum = (float)cv::sum(softmaxProb)[0];
-    // softmaxProb /= sum;
-
-    // minMaxLoc(softmaxProb.reshape(1, 1), 0, &confidence, 0, &classIdPoint);
-    // cout << "predict class: " << _classNames[classIdPoint.x] << endl;
-    // cout << "confidence after softmax: " << confidence << endl;
 
     const float * logits = (float *)prob.data;
     unsigned int maxId;
-    vector<float> scores = softmax(logits, _classNames.size(), maxId);
-    vector<unsigned int> indices = argsort(scores);
+    vector<float> scores = util::softmax(logits, _classNames.size(), maxId);
+    vector<unsigned int> indices = util::argsort(scores);
 
     cout << "predict class: " << _classNames[maxId] << endl;
     //cout << "predict class: " << _classNames[indices[0]] << endl;

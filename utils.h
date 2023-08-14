@@ -5,13 +5,34 @@
 #include <vector>
 using namespace std;
 
-struct ClassificationResults{
+namespace util
+{
+
+    struct ClassificationResults
+    {
         vector<float> score;
-        vector<std::string>label;
+        vector<std::string> label;
     };
 
+    template <typename T>
+    std::vector<float> softmax(const T *logits, unsigned int _size, unsigned int &max_id);
+    
+
+    template <typename T>
+    std::vector<float> softmax(const std::vector<T> &logits, unsigned int &max_id);
+
+    template <typename T>
+    std::vector<unsigned int> argsort(const std::vector<T> &arr);
+    
+
+    template <typename T>
+    std::vector<unsigned int> argsort(const T *arr, unsigned int _size);
+    
+
+}
+
 template <typename T>
-std::vector<float> softmax(const T *logits, unsigned int _size, unsigned int &max_id)
+std::vector<float> util::softmax(const T *logits, unsigned int _size, unsigned int &max_id)
 {
     if (_size == 0 || logits == nullptr)
         return {};
@@ -35,8 +56,7 @@ std::vector<float> softmax(const T *logits, unsigned int _size, unsigned int &ma
 }
 
 template <typename T>
-std::vector<float> softmax(
-    const std::vector<T> &logits, unsigned int &max_id)
+std::vector<float> util::softmax(const std::vector<T> &logits, unsigned int &max_id)
 {
     if (logits.empty())
         return {};
@@ -61,8 +81,7 @@ std::vector<float> softmax(
 }
 
 template <typename T>
-std::vector<unsigned int> argsort(
-    const std::vector<T> &arr)
+std::vector<unsigned int> util::argsort(const std::vector<T> &arr)
 {
     if (arr.empty())
         return {};
@@ -71,14 +90,13 @@ std::vector<unsigned int> argsort(
     for (unsigned int i = 0; i < _size; ++i)
         indices.push_back(i);
     std::sort(indices.begin(), indices.end(),
-              [&arr](const unsigned int a, const unsigned int b)
-              { return arr[a] > arr[b]; });
+                [&arr](const unsigned int a, const unsigned int b)
+                { return arr[a] > arr[b]; });
     return indices;
 }
 
 template <typename T>
-std::vector<unsigned int> argsort(
-    const T *arr, unsigned int _size)
+std::vector<unsigned int> util::argsort(const T *arr, unsigned int _size)
 {
     if (_size == 0 || arr == nullptr)
         return {};
@@ -86,8 +104,8 @@ std::vector<unsigned int> argsort(
     for (unsigned int i = 0; i < _size; ++i)
         indices.push_back(i);
     std::sort(indices.begin(), indices.end(),
-              [arr](const unsigned int a, const unsigned int b)
-              { return arr[a] > arr[b]; });
+                [arr](const unsigned int a, const unsigned int b)
+                { return arr[a] > arr[b]; });
     return indices;
 }
 

@@ -58,7 +58,7 @@ ResNet18Ort::~ResNet18Ort()
 {
 }
 
-void ResNet18Ort::classify(ClassificationResults & result, int topk)
+void ResNet18Ort::classify(util::ClassificationResults & result, int topk)
 {
     _src = cv::imread(_imagePath);
     cv::Mat processImage = _src.clone();
@@ -116,11 +116,9 @@ void ResNet18Ort::classify(ClassificationResults & result, int topk)
                   outputTensors.data(),
                   1);
     // the result restore in vector<float> outputTensorValues;
-    //int id = std::distance(outputTensorValues.begin(), std::max_element(outputTensorValues.begin(), outputTensorValues.end()));
-    //cout << "Predicted Label: " << _classNames.at(id) << std::endl;
     unsigned int maxId;
-    vector<float> scores = softmax(outputTensorValues, maxId);
-    vector<unsigned int> indices = argsort(scores);
+    vector<float> scores = util::softmax(outputTensorValues, maxId);
+    vector<unsigned int> indices = util::argsort(scores);
     
     //cout << "predict class: " << _classNames[maxId] << endl;
     cout << "predict class: " << _classNames[indices[0]] << endl;

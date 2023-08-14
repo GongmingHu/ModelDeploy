@@ -18,4 +18,4 @@ aux_source_directory(. SRC_CUR)
 
 add_executable(ModelDeploy ${SRC_CV} ${SRC_ORT} ${SRC_CUR})
 
-target_link_libraries(ModelDeploy PRIVATE "${ONNXRUNTIME_DIR}/lib/libonnxruntime.so" ${OpenCV_LIBS} )
+target_link_libraries(ModelDeploy PRIVATE "${ONNXRUNTIME_DIR}/lib/libonnxruntime.so" ${OpenCV_LIBS})

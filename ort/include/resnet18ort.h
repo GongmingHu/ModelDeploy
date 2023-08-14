@@ -33,6 +33,6 @@ private:
 public:
     explicit ResNet18Ort(const string & imagePath, const string & classPath,const string & modelPath);
     ~ResNet18Ort();
-    void classify(ClassificationResults & result, int topk = 1);
+    void classify(util::ClassificationResults & result, int topk = 1);
 };
 

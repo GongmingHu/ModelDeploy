@@ -23,7 +23,7 @@ public:
     // };
     ResNet18(const string & imagePath, const string & classPath, const string & modelPath);
     void transform(cv::Mat & outputImage);
-    void classify(ClassificationResults & result, int topk = 1);
+    void classify(util::ClassificationResults & result, int topk = 1);
     ~ResNet18();
 };
 
