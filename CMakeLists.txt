@@ -9,12 +9,15 @@ include_directories("${ONNXRUNTIME_DIR}/include")
 
 find_package(OpenCV 4 REQUIRED)
 
+# 头文件目录
 include_directories( ${OpenCV_INCLUDE_DIRS}/include ${CMAKE_SOURCE_DIR}/cv/include ${CMAKE_SOURCE_DIR}/ort/include)
 include_directories( ${CMAKE_SOURCE_DIR})
 
+# 源代码目录
 aux_source_directory(${CMAKE_SOURCE_DIR}/cv/src SRC_CV )
 aux_source_directory(${CMAKE_SOURCE_DIR}/ort/src SRC_ORT)
 aux_source_directory(. SRC_CUR)
+
 
 add_executable(ModelDeploy ${SRC_CV} ${SRC_ORT} ${SRC_CUR})
 
